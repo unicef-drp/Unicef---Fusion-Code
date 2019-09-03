@@ -1,0 +1,2 @@
+TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,Accept_Header,JSON_Path,WhatToTest
+1,F,Child Mortality Estimates,Series name = IGME,Indicators = Under-5 Deaths  Infant deaths  Neonatal deaths  Deaths age 5 to 14,Totals Testing,https://api.data.unicef.org/sdmx/Rest/data/,"UNICEF,CME_DF,1.0/.TMY0+TMY5T14+TMM0+TMY0T4..269../?dimensionAtObservation=AllDimensions&startPeriod=",&endPeriod=,application/vnd.sdmx.data+json;version=1.0.0-wd,data.dataSets[0].observations,TOTAL
