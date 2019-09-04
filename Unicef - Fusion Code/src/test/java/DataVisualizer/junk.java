@@ -50,7 +50,9 @@ public class junk extends CommonGlobalUtils {
 	public void getAPIResponse() throws InterruptedException {
 			RequestSpecification request = RestAssured.given();
 //			request.header("Accept", "application/json, text/javascript, */*; q=0.01");
-			Response response = getResponse(request);
+
+			Response response = request.get("https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/UNICEF,CME_DF,1.0/.TMM0+TMY0+TMY0T4+TMY5T14..269.?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true");			
+			
 			Map<String, List> jsonResponse = response.jsonPath().getMap("dataSets[0].observations"); 	
 			verifyRateOrPercentage(jsonResponse);  
 			
