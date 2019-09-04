@@ -27,7 +27,6 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	private String URL_Base;
 	private String EndPoint1;
 	private String EndPoint2;
-	private String Accept_Header;
 	private String JSON_Path;
 	private String WhatToTest;
 	static int dataCnt = 1;
@@ -51,7 +50,6 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 		if(RunTest.toUpperCase().equals("T"))  // Execute test case only if RunTest = 'T' or True
 		{
 			RequestSpecification request = RestAssured.given();
-			request.header("Accept", Accept_Header);
 			Response response = getResponse(request);
 			Map<String, List> jsonResponse = response.jsonPath().getMap(JSON_Path); 	
 			verifyRateOrPercentage(jsonResponse);  
@@ -83,13 +81,21 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				int obvValuePctInt;
 				switch(WhatToTest.toUpperCase())
 				{
+				case "PER 1000S":
+					Object obvValuePer1000 = observation.get(0); 
+					Double obvValuePer1000Dbl=Double.valueOf(obvValuePer1000.toString());
+					if(obvValuePer1000Dbl>1000 ||
+						obvValuePer1000Dbl<0	) {
+						LOGGER.error("Observation Per 1000s is less than Zero or greater than 1000=>  "+obvValuePer1000Dbl); 
+					}
+					break;
 				case "TOTAL":
 					Object obvValue = observation.get(0);
 					Double obvValueDbl = Double.valueOf(obvValue.toString());
 					Long obvValueLong = Long.valueOf(obvValue.toString());
 					if(obvValueDbl-obvValueLong>0.9)
 					{
-						LOGGER.error("Observation Rate is not an Integer=>  "+obvValueDbl);
+						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
 					}
 					break;
 				case "PERCENTAGE":
@@ -101,7 +107,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					// Verify greater than a tenth
 					if(result.replace(".", "").length()>1)
 					{
-						LOGGER.error("Observation Percentage value is greater than a 10th of a percent=>  "+obvValuePctDbl);
+						LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValuePctDbl);
 					}
 					// Verify Boundaries
 					if(obvValuePctDbl>100  ||
@@ -109,6 +115,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValuePctDbl);
 					}
+					System.out.println(obvValuePctDbl);
 					break;
 				}
 
@@ -198,12 +205,6 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			 */
 			protected String getEndPoint2() {
 				return EndPoint2;
-			}
-			/**
-			 * @return the accept_Header
-			 */
-			protected String getAccept_Header() {
-				return Accept_Header;
 			}
 			/**
 			 * @return the JSON_Path
