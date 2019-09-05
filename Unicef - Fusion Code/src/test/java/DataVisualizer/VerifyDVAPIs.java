@@ -29,6 +29,11 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	private String EndPoint2;
 	private String JSON_Path;
 	private String WhatToTest;
+	private String Verify1;
+	private String Verify2;
+	private String Verify3;
+	private String Verify4;
+	private String Verify5;
 	static int dataCnt = 1;
 
 	
@@ -52,7 +57,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			RequestSpecification request = RestAssured.given();
 			Response response = getResponse(request);
 			Map<String, List> jsonResponse = response.jsonPath().getMap(JSON_Path); 	
-			verifyRateOrPercentage(jsonResponse);  
+			verifyObservationValues(jsonResponse);  
 			
 		}
 		  
@@ -71,8 +76,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	}
 	
 
-	//  VERIFY VAULES ARE RATES.
-		private void verifyRateOrPercentage(Map<String, List> jsonResponse) {
+	//  VERIFY OBSERVATION VAULES
+		private void verifyObservationValues(Map<String, List> jsonResponse) {
 			String moreThanTenth="";
 			String result;
 			
@@ -81,6 +86,19 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				int obvValuePctInt;
 				switch(WhatToTest.toUpperCase())
 				{
+				case "LEVEL":
+					List<String> levelList=new ArrayList<String>();
+					Object obvValueLevel = observation.get(0); 
+					levelList.add(Verify1.toUpperCase());
+					levelList.add(Verify2.toUpperCase());
+					levelList.add(Verify3.toUpperCase());
+					levelList.add(Verify4.toUpperCase());
+					levelList.add(Verify5.toUpperCase());
+					if(!levelList.contains(obvValueLevel.toString().toUpperCase()))
+					{
+						LOGGER.error("Observation Level is not within range =>  "+obvValueLevel.toString()); 
+					}
+					break;
 				case "PER 1000S":
 					Object obvValuePer1000 = observation.get(0); 
 					Double obvValuePer1000Dbl=Double.valueOf(obvValuePer1000.toString());
@@ -88,15 +106,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						obvValuePer1000Dbl<0	) {
 						LOGGER.error("Observation Per 1000s is less than Zero or greater than 1000=>  "+obvValuePer1000Dbl); 
 					}
-					break;
-				case "TOTAL":
-					Object obvValue = observation.get(0);
-					Double obvValueDbl = Double.valueOf(obvValue.toString());
-					Long obvValueLong = Long.valueOf(obvValue.toString());
-					if(obvValueDbl-obvValueLong>0.9)
-					{
-						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
-					}
+					System.out.println(obvValuePer1000Dbl);
 					break;
 				case "PERCENTAGE":
 					Object obvValuePct = observation.get(0);
@@ -117,6 +127,16 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					}
 					System.out.println(obvValuePctDbl);
 					break;
+				case "TOTAL":
+					Object obvValue = observation.get(0);
+					Double obvValueDbl = Double.valueOf(obvValue.toString());
+					Long obvValueLong = Long.valueOf(obvValue.toString());
+					if(obvValueDbl-obvValueLong>0.9)
+					{
+						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
+					}
+					System.out.println(obvValueDbl);
+					break;
 				}
 
 				
@@ -130,7 +150,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 		private Response getResponse(RequestSpecification request) throws InterruptedException
 		{
 				boolean responseFound=false;
-				Response response = request.get(URL_Base+EndPoint1+getPeriodRange().substring(0,4)+EndPoint2+getPeriodRange().substring(4,8));
+//				Response response = request.get(URL_Base+EndPoint1+getPeriodRange().substring(0,4)+EndPoint2+getPeriodRange().substring(4,8));
+				Response response = request.get(URL_Base+EndPoint1+EndPoint2);
 
 				while(!responseFound)  // KEEP LOOPING UNTIL STATUS CODE = 200 <OK>
 				{
@@ -146,18 +167,6 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				}
 				return response;
 		}
-	
-	
-	//  GET PERIOD RANGE MIN->MAX.  USED AS A DIMENSION
-		private String getPeriodRange() {
-			int maxYear = 0;
-			int minYear = 0;
-			maxYear=Integer.parseInt(Year.now().toString());  
-			maxYear++;  // Add 1+ years.  Data Visualizer does this.
-			minYear=maxYear-50;
-			return Integer.toString(minYear)+Integer.toString(maxYear);
-		}	
-
 	
 	
 	// GETTERS & SETTERS
@@ -217,6 +226,24 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			 */
 			protected String getWhatToTest() {
 				return WhatToTest;
+			}
+			/**
+			 * @return Verify/Confirm Data
+			 */
+			protected String getVerify1() {
+				return TestDesc1;
+			}
+			protected String getVerify2() {
+				return TestDesc1;
+			}
+			protected String getVerify3() {
+				return TestDesc1;
+			}
+			protected String getVerify4() {
+				return TestDesc1;
+			}
+			protected String getVerify5() {
+				return TestDesc1;
 			}
 	// GETTERS & SETTERS
 	
