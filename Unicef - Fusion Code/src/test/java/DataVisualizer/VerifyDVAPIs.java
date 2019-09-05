@@ -45,8 +45,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 		LOGGER.info("++++++++++++++++++++++++++++++++++++++++++++++++++");
 		LOGGER.info("++++++++++++++++++++++++++++++++++++++++++++++++++");
 		LOGGER.info("START  --  Test Case ->  "+TC);
-		LOGGER.info("Test Case Description ->  "+TestDesc1+" -> "+TestDesc2+
-				" -> "+TestDesc3+" -> "+TestDesc4);
+		LOGGER.info("Test Case Description ->  "+TestDesc1);
+		LOGGER.info("Test Case Description ->  "+TestDesc2);
+		LOGGER.info("Test Case Description ->  "+TestDesc3);
+		LOGGER.info("Test Case Description ->  "+TestDesc4);
 	}
 
 	
@@ -60,6 +62,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			verifyObservationValues(jsonResponse);  
 			
 		}else{
+			LOGGER.info("Test Case ->  "+TC+"    is SKIPPED");
+			LOGGER.info("Test Case ->  "+TC+"    is SKIPPED");
 			LOGGER.info("Test Case ->  "+TC+"    is SKIPPED");
 		}
 		  
@@ -105,9 +109,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				case "PER 1000S":
 					Object obvValuePer1000 = observation.get(0); 
 					Double obvValuePer1000Dbl=Double.valueOf(obvValuePer1000.toString());
-					if(obvValuePer1000Dbl>1000 ||
-						obvValuePer1000Dbl<0	) {
-						LOGGER.error("Observation Per 1000s is less than Zero or greater than 1000=>  "+obvValuePer1000Dbl); 
+					if(obvValuePer1000Dbl> Double.valueOf(ExpectedResult2) ||
+						obvValuePer1000Dbl< Double.valueOf(ExpectedResult1)) {
+						LOGGER.error("Observation Per "+ExpectedResult2+(" is less than Zero or greater than"+ExpectedResult2+
+								"=>  "+obvValuePer1000Dbl)); 
 					}
 				//	System.out.println(obvValuePer1000Dbl);
 					break;
