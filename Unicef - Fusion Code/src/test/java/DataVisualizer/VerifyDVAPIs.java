@@ -116,7 +116,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						LOGGER.error("Observation Per "+ExpectedResult2+(" is less than Zero or greater than"+ExpectedResult2+
 								"=>  "+obvValuePer1000Dbl)); 
 					}
-					System.out.println(obvValuePer1000Dbl);
+			//		System.out.println(obvValuePer1000Dbl);
 					break;
 				case "PERCENTAGE":  //  # is a %%%%%
 					String mapValue="";
@@ -141,7 +141,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValuePctDbl);
 					}
-//					System.out.println(obvValuePctDbl);
+			//		System.out.println(obvValuePctDbl);
 					break;
 				case "TOTAL":  //  Number should be an integer
 					Object obvValue = observation.get(0);
@@ -190,7 +190,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
 					}
-				//	System.out.println(obvValueLessThanPctDbl);
+					System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 
