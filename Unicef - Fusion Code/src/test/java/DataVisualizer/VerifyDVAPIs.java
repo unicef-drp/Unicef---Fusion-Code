@@ -85,6 +85,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	//  VERIFY OBSERVATION VAULES
 		private void verifyObservationValues(Map<String, List> jsonResponse) {
 			String moreThanTenth="";
+			String obvValeStr="";
 			String result;
 			
 			for (List<ArrayList> observation : jsonResponse.values()) 
@@ -92,7 +93,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				int obvValuePctInt;
 				switch(WhatToTest.toUpperCase())
 				{
-				case "LEVEL":
+				case "LEVEL":    //  e.g. LOW, MEDIUM, HIGH - NO #'S
 					List<String> levelList=new ArrayList<String>();
 					levelList.add(ExpectedResult1.toUpperCase());
 					levelList.add(ExpectedResult2.toUpperCase());
@@ -106,7 +107,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					}
 			//		System.out.println(obvValueLevel.toString());
 					break;
-				case "PER 1000S":
+				case "PER 1000S":   //  Numbers per 1,000 or 100,000
+				case "PER 100000S":
 					Object obvValuePer1000 = observation.get(0); 
 					Double obvValuePer1000Dbl=Double.valueOf(obvValuePer1000.toString());
 					if(obvValuePer1000Dbl> Double.valueOf(ExpectedResult2) ||
@@ -114,9 +116,9 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						LOGGER.error("Observation Per "+ExpectedResult2+(" is less than Zero or greater than"+ExpectedResult2+
 								"=>  "+obvValuePer1000Dbl)); 
 					}
-				//	System.out.println(obvValuePer1000Dbl);
+					System.out.println(obvValuePer1000Dbl);
 					break;
-				case "PERCENTAGE":
+				case "PERCENTAGE":  //  # is a %%%%%
 					String mapValue="";
 					Object obvValuePct = observation.get(0);
 					//  Had to do this for TC# 3 which returns a NullExceptionPointer????
@@ -139,17 +141,56 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValuePctDbl);
 					}
-					System.out.println(obvValuePctDbl);
+//					System.out.println(obvValuePctDbl);
 					break;
-				case "TOTAL":
+				case "TOTAL":  //  Number should be an integer
 					Object obvValue = observation.get(0);
-					Double obvValueDbl = Double.valueOf(obvValue.toString());
-					Long obvValueLong = Long.valueOf(obvValue.toString());
+					//  REMOVE THE LESS  OR GREATER THAN SYMBOL IF PRESENT  "<" or ">"
+						obvValeStr=obvValue.toString();
+						if(obvValeStr.contains("<")) {
+							obvValeStr=obvValeStr.replace("<", "");
+						}
+						if(obvValeStr.contains(">")) {
+							obvValeStr=obvValeStr.replace(">", "");
+						}
+					Double obvValueDbl = Double.valueOf(obvValeStr);
+					Long obvValueLong = Long.valueOf(obvValeStr);
 					if(obvValueDbl-obvValueLong>0.9)
 					{
 						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
 					}
-				//	System.out.println(obvValueDbl);
+//					System.out.println(obvValueDbl);
+					break;
+				case "PERCENTAGE WITH LESS OR GREATER THAN AND NULLS":
+					Object obvValueLessThanPct = observation.get(0);
+					//  REMOVE THE LESS  OR GREATER THAN SYMBOL IF PRESENT  "<" or ">"
+					//  IF 'NULL' FOUND SKIP VERIFCATION
+						if(obvValueLessThanPct==null) {
+							break;  // Valid to have a 'NULL', but no Verification
+						};
+						obvValeStr=obvValueLessThanPct.toString();
+						if(obvValeStr.contains("<")) {
+							obvValeStr=obvValeStr.replace("<", "");
+						}
+						if(obvValeStr.contains(">")) {
+							obvValeStr=obvValeStr.replace(">", "");
+						}
+					Double obvValueLessThanPctDbl=Double.valueOf(obvValeStr);
+					obvValuePctInt=(int)Math.round(obvValueLessThanPctDbl);
+					moreThanTenth=obvValueLessThanPctDbl.toString();
+					result=moreThanTenth.substring(moreThanTenth.indexOf("."), moreThanTenth.length());
+					// Verify greater than a tenth
+					if(result.replace(".", "").length()>1)
+					{
+						LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValueLessThanPctDbl);
+					}
+					// Verify Boundaries
+					if(obvValueLessThanPctDbl>100  ||
+						obvValueLessThanPctDbl<0	)
+					{
+						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
+					}
+				//	System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 

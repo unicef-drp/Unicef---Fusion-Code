@@ -4,7 +4,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 2).   Infant Deaths 
 3).  Neonatal Deaths  
 4).  Deaths age 5 to 14",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CME_DF,1.0/.TMM0+TMY0+TMY0T4+TMY5T14..269.?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,,,,,
-2,F,Child Mortality Estimates,Series name = IGME,"Indicators =>   
+2,T,Child Mortality Estimates,Series name = IGME,"Indicators =>   
 1).  Under-5 Mortality Rate   
 2).  Mortality agae 5 to 14  
 3).  Infant Mortality Rate   
@@ -16,7 +16,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 4).  Percentage of women aged 15-49 who think that FGM should be eliminated",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,PT_FGM,1.0/.PT_F_0-14_FGM+PT_F_15-49_FGM+PT_F_15-49_FGM_ELIM+PT_M_15-49_FGM_ELIM...........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,
 4,F,Child Poverty,,"Indicators =>
 1). Poverty Level",Level Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CHLD_PVTY,1.0/.PV_LEVEL.......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,LEVEL,LOW,MEDIUM,HIGH,VERY_LOW,VERY_HIGH
-5,T,Child Protection,,"Indicators =>
+5,F,Child Protection,,"Indicators =>
 1).  Percentage of students aged 13 to 15 years who reported being bullied on one or more days in the past 30 days
 2).  Percentage of girls aged 15-19 years who are currently married or in union
 3).  Percentage of girls aged 15-17 years who have experienced sexual violence
@@ -33,3 +33,49 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 1).  Rate of children in detention  
 2).  Rate of children in residential care
 ","PER 100,000s Testing",https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CHILD_PROTECTION,1.0/AFG+AGO+AIA+ALB+ARE+ARG+ARM+ATG+AUS+AUT+AZE+BDI+BEL+BEN+BFA+BGD+BGR+BHR+BHS+BIH+BLR+BLZ+BOL+BRA+BRB+BRN+BTN+BWA+CAF+CAN+CHE+CHL+CHN+CIV+CMR+COD+COG+COK+COL+COM+CPV+CRI+CSK+CUB+CYP+CZE+DEU+DJI+DMA+DNK+DOM+DZA+ECU+EGY+ERI+ESP+EST+ETH+FIN+FJI+FRA+GAB+GBR+GEO+GHA+GIN+GMB+GNB+GNQ+GRC+GRD+GTM+GUY+HND+HRV+HTI+HUN+IDN+IND+IRL+IRN+IRQ+ISL+ISR+ITA+JAM+JOR+JPN+KAZ+KEN+KGZ+KHM+KIR+KNA+KOR+KWT+LAO+LBN+LBR+LBY+LCA+LIE+LKA+LSO+LTU+LUX+LVA+MAR+MDA+MDG+MDV+MEX+MHL+MKD+MLI+MLT+MMR+MNE+MNG+MOZ+MRT+MSR+MUS+MWI+MYS+NAM+NER+NGA+NIC+NIU+NLD+NOR+NPL+NRU+NZL+OMN+PAK+PAN+PER+PHL+PNG+POL+PRK+PRT+PRY+PSE+QAT+ROU+RUS+RWA+SAU+SDN+SEN+SGP+SLB+SLE+SLV+SMR+SOM+SRB+SSD+STP+SUR+SVK+SVN+SWE+SWZ+SYC+SYR+TCA+TCD+TGO+THA+TJK+TKL+TKM+TLS+TON+TTO+TUN+TUR+TUV+TZA+UGA+UKR+URY+USA+UZB+VCT+VEN+VGB+VNM+VUT+WSM+YEM+ZAF+ZMB+ZWE.PT_CHLD_DN+PT-CHLD_RES-CARE......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 100000s,0,100000,,,
+7,F,Early Childhood Development,,"Indicators =>
+1).  Percentage of children aged 36-59 months with whom any adult household member has engaged in four or more activities to provide early stimulation and responsive care in the last 3 days
+2).  Percentage of children under age five who have three or more childrens books
+3).  Percentage of children aged 36-59 months who are developmentally on track in at least 3 of the 4 following domains: literacy-numeracy, physical, social-emotional and learning
+4).  Percentage of children aged 36-59 months attending an early childhood education programme
+5).  Percentage of children under age five who play with two or more types of playthings
+6).  Percentage of children under age five left alone or under the supervision of another child younger than 10 years of age for more than one hour at least once in the last week",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,EARLY_CHILD_DEVELOP,1.0/.ECD_CHLD_36-59M_ADLT_SRC+ECD_CHLD_36-59M_EDU-PGM+ECD_CHLD_36-59M_LMPSL+ECD_CHLD_U5_BKS-HM+ECD_CHLD_U5_LFT-ALN+ECD_CHLD_U5_PLYTH-HM..........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,
+8,F,Education,,"Indicators =>
+1).  Adjusted net attendance rate for youth of upper secondary school age
+2).  Adjusted net attendance rate for adolescents of lower secondary school age
+3).  Out-of-school rate for youth of upper secondary school age
+4).  Adjusted net attendance rate for children of primary school age
+5).  Completion rate for adolescents of lower secondary school age
+6).  Completion rate for children of primary school age
+7).  Completion rate for youth of upper secondary education school age
+8).  Out-of-school rate for adolescents of lower secondary school age
+9).  Out-of-school rate for children of primary school age
+10). Adjusted net attendance rate, one year before the official primary entry age",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,EDUCATION,1.0/.ED_ANAR_L02+ED_ANAR_L1+ED_ANAR_L2+ED_ANAR_L3+ED_CR_L1+ED_CR_L2+ED_CR_L3+ED_ROFST_L1+ED_ROFST_L2+ED_ROFST_L3.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,
+9,F,HIV and AIDS,,"Indicators =>
+1). Per cent of pregnant women living with HIV receiving lifelong ART
+3). Per cent of pregnant women presenting at ANC who were tested for HIV or already knew their HIV positive status
+4). Per cent of young people (aged 15-24) with comprehensive, correct knowledge of HIV
+5). Per cent of people (aged 15-49) expressing discriminatory attitudes towards people living with HIV
+9). Per cent of young people (aged 15-24) who had more than one sexual partner in the past 12 months reporting the use of a condom during their last sexual intercourse
+11). Per cent of young people (aged 15-24) who have been tested for HIV in the last 12 months and received the result of the last test
+13). Per cent of children (aged 0-14) living with HIV receiving ART
+14). Per cent of infants born to pregnant women living with HIV who received a virological test for HIV within 2 months of birth
+16). Per cent of pregnant women living with HIV receiving effective ARVs for PMTCT (excludes single-dose nevirapine)
+18). Per cent of young people (aged 15-24) who know a place to get tested for HIV
+19). Per cent of young people (aged 15-24) who have ever been tested for HIV and received the result of the last test
+24). Per cent of young people (aged 15-24) who had sex with a non-marital, non-cohabitating partner in the past 12 months reporting the use of a condom during their last sexual intercourse",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_PED_ART_CVG+HVA_PED_EID_CVG+HVA_PMTCT_ART_CVG+HVA_PMTCT_ARV_CVG+HVA_PMTCT_TEST_CVG+HVA_PREV_CNDM_MULT+HVA_PREV_CNDM_REG+HVA_PREV_KNOW+HVA_PREV_KNOW_TEST+HVA_PREV_STIGMA+HVA_PREV_TEST_RES+HVA_PREV_TEST_RES_12.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,
+10,F,HIV and AIDS,,"Indicators =>  
+6). Estimated number of pregnant women living with HIV
+7). Estimated number of children (aged 0-17) who have lost one or both parents due to AIDS
+8). Reported number of children (aged 0-14) receiving ART
+10). Estimated number of annual AIDS-related deaths
+15). Reported number of pregnant woment living with HIV receiving ARVs for PMTCT
+17). Reported number of pregnant women living with HIV receiving lifelong ART
+20). Estimated number of children living with HIV
+21). Estimated number of new HIV infections
+23). Estimated number of children (aged 0-17) who have lost one or both parents due to all causes
+",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_DTH_ANN+HVA_EPI_INF_ANN+HVA_EPI_LHIV+HVA_PED_ART_NUM+HVA_PED_LOST+HVA_PED_LOST_AIDS+HVA_PMTCT_ART_NUM+HVA_PMTCT_ARV_NUM+HVA_PMTCT_PWLHIV.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,,,,,
+11,T,HIV and AIDS,,"Indicators =>   
+12). Estimated incidence rate (new HIV infection per 1,000 uninfected population)",PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_INF_RT.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,0,1000,,,
+12,T,HIV and AIDS,,"Indicators =>
+22). Estimated rate of annual AIDS-related deaths (per 100,000 population)","PER 100,000s Testing",https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_DTH_RT.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 100000s,0,100000,,,
