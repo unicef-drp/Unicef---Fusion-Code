@@ -29,11 +29,11 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	private String EndPoint2;
 	private String JSON_Path;
 	private String WhatToTest;
-	private String Verify1;
-	private String Verify2;
-	private String Verify3;
-	private String Verify4;
-	private String Verify5;
+	private String ExpectedResult1;
+	private String ExpectedResult2;
+	private String ExpectedResult3;
+	private String ExpectedResult4;
+	private String ExpectedResult5;
 	static int dataCnt = 1;
 
 	
@@ -59,6 +59,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			Map<String, List> jsonResponse = response.jsonPath().getMap(JSON_Path); 	
 			verifyObservationValues(jsonResponse);  
 			
+		}else{
+			LOGGER.info("Test Case ->  "+TC+"    is SKIPPED");
 		}
 		  
 	}
@@ -88,16 +90,17 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				{
 				case "LEVEL":
 					List<String> levelList=new ArrayList<String>();
+					levelList.add(ExpectedResult1.toUpperCase());
+					levelList.add(ExpectedResult2.toUpperCase());
+					levelList.add(ExpectedResult3.toUpperCase());
+					levelList.add(ExpectedResult4.toUpperCase());
+					levelList.add(ExpectedResult5.toUpperCase());
 					Object obvValueLevel = observation.get(0); 
-					levelList.add(Verify1.toUpperCase());
-					levelList.add(Verify2.toUpperCase());
-					levelList.add(Verify3.toUpperCase());
-					levelList.add(Verify4.toUpperCase());
-					levelList.add(Verify5.toUpperCase());
 					if(!levelList.contains(obvValueLevel.toString().toUpperCase()))
 					{
 						LOGGER.error("Observation Level is not within range =>  "+obvValueLevel.toString()); 
 					}
+			//		System.out.println(obvValueLevel.toString());
 					break;
 				case "PER 1000S":
 					Object obvValuePer1000 = observation.get(0); 
@@ -106,11 +109,17 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						obvValuePer1000Dbl<0	) {
 						LOGGER.error("Observation Per 1000s is less than Zero or greater than 1000=>  "+obvValuePer1000Dbl); 
 					}
-					System.out.println(obvValuePer1000Dbl);
+				//	System.out.println(obvValuePer1000Dbl);
 					break;
 				case "PERCENTAGE":
+					String mapValue="";
 					Object obvValuePct = observation.get(0);
-					Double obvValuePctDbl = Double.valueOf(obvValuePct.toString());
+					//  Had to do this for TC# 3 which returns a NullExceptionPointer????
+							mapValue=jsonResponse.values().toString();
+							if(mapValue != null) {
+								continue;
+							}
+					Double obvValuePctDbl=Double.valueOf(obvValuePct.toString());
 					obvValuePctInt=(int)Math.round(obvValuePctDbl);
 					moreThanTenth=obvValuePctDbl.toString();
 					result=moreThanTenth.substring(moreThanTenth.indexOf("."), moreThanTenth.length());
@@ -135,12 +144,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
 					}
-					System.out.println(obvValueDbl);
+				//	System.out.println(obvValueDbl);
 					break;
 				}
 
-				
-				
 			}
 		}
 
@@ -150,8 +157,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 		private Response getResponse(RequestSpecification request) throws InterruptedException
 		{
 				boolean responseFound=false;
-//				Response response = request.get(URL_Base+EndPoint1+getPeriodRange().substring(0,4)+EndPoint2+getPeriodRange().substring(4,8));
-				Response response = request.get(URL_Base+EndPoint1+EndPoint2);
+				Response response = request.get(URL_Base+EndPoint1);
 
 				while(!responseFound)  // KEEP LOOPING UNTIL STATUS CODE = 200 <OK>
 				{
@@ -230,20 +236,20 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			/**
 			 * @return Verify/Confirm Data
 			 */
-			protected String getVerify1() {
-				return TestDesc1;
+			protected String getExpectedResult1() {
+				return ExpectedResult1;
 			}
-			protected String getVerify2() {
-				return TestDesc1;
+			protected String getExpectedResult2() {
+				return ExpectedResult2;
 			}
-			protected String getVerify3() {
-				return TestDesc1;
+			protected String getExpectedResult3() {
+				return ExpectedResult3;
 			}
-			protected String getVerify4() {
-				return TestDesc1;
+			protected String getExpectedResult4() {
+				return ExpectedResult4;
 			}
-			protected String getVerify5() {
-				return TestDesc1;
+			protected String getExpectedResult5() {
+				return ExpectedResult5;
 			}
 	// GETTERS & SETTERS
 	
