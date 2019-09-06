@@ -91,7 +91,7 @@
 				<configuration>
 
 					<includes>
-				 <include>*/**/VerifyAPIs.java</include> 
+				 <include>*/**/VerifyDVAPIs.java</include> 
 				<!--  <include>/**/getDataFromCsvFile.java</include> -->
 
 					</includes>   
