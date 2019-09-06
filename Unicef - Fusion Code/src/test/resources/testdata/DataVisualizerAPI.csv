@@ -80,7 +80,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 12,F,HIV and AIDS,,"Indicators =>
 22). Estimated rate of annual AIDS-related deaths (per 100,000 population)","PER 100,000s Testing",https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_DTH_RT.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 100000s,0,100000,,,
 13,F,SDG Child Mortality,,Testing all data,PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,SDG_CHLD_MORT,1.0/all?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,0,1000,,,
-14,T,Maternal Newborn Child Health,,"Indicators =>
+14,F,Maternal Newborn Child Health,,"Indicators =>
 1). Percentage of women aged 15–49 years attended at least once during pregnancy by skilled health personnel (doctor, nurse or midwife). The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 2). Percentage of women aged 15–49 years attended at least four times during pregnancy by any provider. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 3). Percentage of births delivered in a health facility. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
@@ -88,3 +88,56 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 5). Percentage of women aged 20-24 who gave birth before age 18. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 6). Percentage of women aged 15–49 years who received postnatal care within 2 days after birth. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 7). Percentage of last births in the two years preceding the survey who had their first postnatal checkup within the first two days after birth. Includes newborns who received a checkup from a doctor, midwife, nurse, feldsher, or traditional birth attendant.",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,MNCH,1.0/.MNH_ANC1+MNH_ANC4+MNH_BIRTH18+MNH_CSECTION+MNH_INST_DEL+MNH_PNC_B+MNH_PNC_W..........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,
+15,T,WASH,,"Indicators =>
+1). Proportion of health care facilities with no cleaning service
+2). Proportion of the population using of sanitation facilities connected to sewer networks
+3). Proportion of health care facilities with basic health care waste management services
+4). Proportion of population with a limited handwashing facility
+5). Proportion of health care facilities with no sanitation service
+6). Proportion of schools with no sanitation service
+7). Proportion of population using basic drinking water services
+8). Proportion of population using improved drinking water sources
+9). Proportion of population using at least basic drinking water services
+10). Proportion of health care facilities with limited health care waste management services
+11). Proportion of the population using improved latrines and other improved facilities
+12). Proportion of population with no handwashing facility at home
+13). Proportion of health care facilities with limited cleaning services
+14). Proportion of population using limited drinking water services
+15). Proportion of health care facilities with basic hygiene services
+16). Proportion of health care facilities with basic water services
+17). Proportion of the population using of piped drinking water sources
+18). Proportion of schools with no hygiene service
+19). Proportion of population using basic sanitation services
+20). Proportion of health care facilities with limited water services
+21). Proportion of population using limited sanitation services
+22). Proportion of the population using of onsite sanitation facilities with human waste treated offsite
+23). Proportion of the population using of non-piped improved drinking water sources
+24). Proportion of population using at least basic sanitation services
+25). Proportion of health care facilities with no healthcare waste management service
+26). Proportion of population using surface water
+27). Proportion of population with a handwashing facility with soap and water available at home
+28). Proportion of health care facilities with no water service
+29). Proportion of population using improved sanitation facilities
+30). Proportion of population using safely managed drinking water services
+31). Proportion of schools with limited hygiene services
+32). Proportion of health care facilities with limited hygiene services
+33). Proportion of population using unimproved drinking water sources
+34). Proportion of health care facilities with basic cleaning services
+35). Proportion of health care facilities with basic sanitation services
+36). Proportion of schools with basic sanitation services
+37). Proportion of the population using of sanitation facilities connected to sewer networks and with sewage treated to at least secondary levels
+38). Proportion of schools with limited sanitation services
+39). Proportion of population practising open defecation
+40). Proportion of health care facilities with limited sanitation services
+41). Proportion of the population using of improved drinking water sources free of faecal and priority chemical contamination
+42). Proportion of schools with basic hygiene services
+43). Proportion of population using unimproved sanitation facilites
+44). Proportion of the population using of onsite sanitation facilities with human waste disposed in-situ
+45). Proportion of the population using of improved drinking water sources located on premises
+46). Proportion of health care facilities with no hygiene service
+47). Proportion of the population using of sanitation facilities connected to septic tanks
+48). Proportion of schools with basic drinking water services
+49). Proportion of population using safely managed sanitation services
+50). Proportion of schools with limited drinking water services
+51). Proportion of the population using of improved drinking water sources available when needed
+52). Proportion of schools with no drinking water service",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,WASH,1.0/.WS_HCF_C-B+WS_HCF_C-L+WS_HCF_C-N+WS_HCF_H-B+WS_HCF_H-L+WS_HCF_H-N+WS_HCF_S-B+WS_HCF_S-L+WS_HCF_S-N+WS_HCF_W-B+WS_HCF_W-L+WS_HCF_W-N+WS_HCF_WM-B+WS_HCF_WM-L+WS_HCF_WM-N+WS_PPL_H-B+WS_PPL_H-L+WS_PPL_H-N+WS_PPL_S-ALB+WS_PPL_S-B+WS_PPL_S-DIS+WS_PPL_S-FST+WS_PPL_S-I+WS_PPL_S-L+WS_PPL_S-LAT+WS_PPL_S-SEP+WS_PPL_S-SEW+WS_PPL_S-SM+WS_PPL_S-WWT+WS_PPL_W-ALB+WS_PPL_W-AVA+WS_PPL_W-B+WS_PPL_W-I+WS_PPL_W-L+WS_PPL_W-NP+WS_PPL_W-P+WS_PPL_W-PRE+WS_PPL_W-QUA+WS_PPL_W-SM+WS_PPL_W-SW+WS_PPL_W-UI+WS_PPS_S-OD+WS_PPS_S-UI+WS_SCH_H-B+WS_SCH_H-L+WS_SCH_H-N+WS_SCH_S-B+WS_SCH_S-L+WS_SCH_S-N+WS_SCH_W-B+WS_SCH_W-L+WS_SCH_W-N.......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,DO NOT VERIFY 10TH,,,,

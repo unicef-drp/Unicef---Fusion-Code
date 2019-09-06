@@ -180,7 +180,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					moreThanTenth=obvValueLessThanPctDbl.toString();
 					result=moreThanTenth.substring(moreThanTenth.indexOf("."), moreThanTenth.length());
 					// Verify greater than a tenth
-					if(result.replace(".", "").length()>1)
+					//  UNLESS EXPECTEDRESULT1 IS EMPTY
+					//  Reason: Some TCs have more than 10th in % - So d not test it.  !!!
+					if(result.replace(".", "").length()>1 &&
+							ExpectedResult1.isEmpty())
 					{
 						LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValueLessThanPctDbl);
 					}
