@@ -110,13 +110,27 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				case "PER 1000S":   //  Numbers per 1,000 or 100,000
 				case "PER 100000S":
 					Object obvValuePer1000 = observation.get(0); 
-					Double obvValuePer1000Dbl=Double.valueOf(obvValuePer1000.toString());
+					//  REMOVE THE LESS  OR GREATER THAN SYMBOL IF PRESENT  "<" or ">"
+					//  IF 'NULL' FOUND SKIP VERIFCATION
+						if(obvValuePer1000==null) {
+							break;  // Valid to have a 'NULL', but no Verification
+						};
+						obvValeStr=obvValuePer1000.toString();
+						if(obvValeStr.contains("<")) {
+							obvValeStr=obvValeStr.replace("<", "");
+						}
+						if(obvValeStr.contains(">")) {
+							obvValeStr=obvValeStr.replace(">", "");
+						}
+					Double obvValuePer1000Dbl=Double.valueOf(obvValeStr);
+			
+					
 					if(obvValuePer1000Dbl> Double.valueOf(ExpectedResult2) ||
 						obvValuePer1000Dbl< Double.valueOf(ExpectedResult1)) {
 						LOGGER.error("Observation Per "+ExpectedResult2+(" is less than Zero or greater than"+ExpectedResult2+
 								"=>  "+obvValuePer1000Dbl)); 
 					}
-			//		System.out.println(obvValuePer1000Dbl);
+		//			System.out.println(obvValuePer1000Dbl);
 					break;
 				case "PERCENTAGE":  //  # is a %%%%%
 					String mapValue="";
@@ -146,6 +160,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 				case "TOTAL":  //  Number should be an integer
 					Object obvValue = observation.get(0);
 					//  REMOVE THE LESS  OR GREATER THAN SYMBOL IF PRESENT  "<" or ">"
+					//  IF 'NULL' FOUND SKIP VERIFCATION
+						if(obvValue==null) {
+							break;  // Valid to have a 'NULL', but no Verification
+						};
 						obvValeStr=obvValue.toString();
 						if(obvValeStr.contains("<")) {
 							obvValeStr=obvValeStr.replace("<", "");
@@ -159,7 +177,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
 					}
-//					System.out.println(obvValueDbl);
+					System.out.println(obvValueDbl);
 					break;
 				case "PERCENTAGE WITH LESS OR GREATER THAN AND NULLS":
 					Object obvValueLessThanPct = observation.get(0);
@@ -193,7 +211,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
 					}
-					System.out.println(obvValueLessThanPctDbl);
+			//		System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 

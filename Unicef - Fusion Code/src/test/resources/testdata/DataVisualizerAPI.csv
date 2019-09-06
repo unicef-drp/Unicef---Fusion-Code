@@ -64,7 +64,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 18). Per cent of young people (aged 15-24) who know a place to get tested for HIV
 19). Per cent of young people (aged 15-24) who have ever been tested for HIV and received the result of the last test
 24). Per cent of young people (aged 15-24) who had sex with a non-marital, non-cohabitating partner in the past 12 months reporting the use of a condom during their last sexual intercourse",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_PED_ART_CVG+HVA_PED_EID_CVG+HVA_PMTCT_ART_CVG+HVA_PMTCT_ARV_CVG+HVA_PMTCT_TEST_CVG+HVA_PREV_CNDM_MULT+HVA_PREV_CNDM_REG+HVA_PREV_KNOW+HVA_PREV_KNOW_TEST+HVA_PREV_STIGMA+HVA_PREV_TEST_RES+HVA_PREV_TEST_RES_12.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,
-10,F,HIV and AIDS,,"Indicators =>  
+10,T,HIV and AIDS,,"Indicators =>  
 6). Estimated number of pregnant women living with HIV
 7). Estimated number of children (aged 0-17) who have lost one or both parents due to AIDS
 8). Reported number of children (aged 0-14) receiving ART
@@ -88,7 +88,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 5). Percentage of women aged 20-24 who gave birth before age 18. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 6). Percentage of women aged 15–49 years who received postnatal care within 2 days after birth. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 7). Percentage of last births in the two years preceding the survey who had their first postnatal checkup within the first two days after birth. Includes newborns who received a checkup from a doctor, midwife, nurse, feldsher, or traditional birth attendant.",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,MNCH,1.0/.MNH_ANC1+MNH_ANC4+MNH_BIRTH18+MNH_CSECTION+MNH_INST_DEL+MNH_PNC_B+MNH_PNC_W..........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,
-15,T,WASH,,"Indicators =>
+15,F,WASH,,"Indicators =>
 1). Proportion of health care facilities with no cleaning service
 2). Proportion of the population using of sanitation facilities connected to sewer networks
 3). Proportion of health care facilities with basic health care waste management services
@@ -141,3 +141,24 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 50). Proportion of schools with limited drinking water services
 51). Proportion of the population using of improved drinking water sources available when needed
 52). Proportion of schools with no drinking water service",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,WASH,1.0/.WS_HCF_C-B+WS_HCF_C-L+WS_HCF_C-N+WS_HCF_H-B+WS_HCF_H-L+WS_HCF_H-N+WS_HCF_S-B+WS_HCF_S-L+WS_HCF_S-N+WS_HCF_W-B+WS_HCF_W-L+WS_HCF_W-N+WS_HCF_WM-B+WS_HCF_WM-L+WS_HCF_WM-N+WS_PPL_H-B+WS_PPL_H-L+WS_PPL_H-N+WS_PPL_S-ALB+WS_PPL_S-B+WS_PPL_S-DIS+WS_PPL_S-FST+WS_PPL_S-I+WS_PPL_S-L+WS_PPL_S-LAT+WS_PPL_S-SEP+WS_PPL_S-SEW+WS_PPL_S-SM+WS_PPL_S-WWT+WS_PPL_W-ALB+WS_PPL_W-AVA+WS_PPL_W-B+WS_PPL_W-I+WS_PPL_W-L+WS_PPL_W-NP+WS_PPL_W-P+WS_PPL_W-PRE+WS_PPL_W-QUA+WS_PPL_W-SM+WS_PPL_W-SW+WS_PPL_W-UI+WS_PPS_S-OD+WS_PPS_S-UI+WS_SCH_H-B+WS_SCH_H-L+WS_SCH_H-N+WS_SCH_S-B+WS_SCH_S-L+WS_SCH_S-N+WS_SCH_W-B+WS_SCH_W-L+WS_SCH_W-N.......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,DO NOT VERIFY 10TH,,,,
+16,F,Immunisation,,"Indicators =>
+1). Percentage of surviving infants who received the third dose of Hib containing vaccine
+2). Percentage of surviving infants who received the first dose of rubella containing vaccine
+3). Percentage of surviving infants who received a dose of yellow fever vaccine (for countries at risk of YF and where YF vaccine in the national schedule)
+4). Percentage of surviving infants who received the third dose of pneumococcal conjugate vaccine
+5). Percentage of surviving infants who received the first dose of inactivated polio containing vaccine
+6). Percentage of surviving infants who received the third dose of DTP containing vaccine
+7). Percentage of live births who received Hepatitis B vaccine within 24 hours of birth
+8). Percentage of surviving infants who received the first dose of measles containing vaccine
+9). Percentage of children who received the second dose of measles containing vaccine as per administered in the national schedule
+10). Percentage of live births who received bacille Calmette-Guérin (vaccine against tuberculosis)
+11). Percentage of surviving infants who received the first dose of DTP containing vaccine
+12). Percentage of surviving infants who received the third dose of HepB containing vaccine
+13). Percentage of surviving infants who received the last dose of rotavirus vaccine (2nd or 3rd dose depending on vaccine used)
+14). Percentage of surviving infants who received the third dose of polio vaccine",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,IMMUNISATION,1.0/AFG+AGO+ALB+AND+ARE+ARG+ARM+ATG+AUS+AUT+AZE+BDI+BEL+BEN+BFA+BGD+BGR+BHR+BHS+BIH+BLR+BLZ+BOL+BRA+BRB+BRN+BTN+BWA+CAF+CAN+CHE+CHL+CHN+CIV+CMR+COD+COG+COK+COL+COM+CPV+CRI+CSK+CUB+CYP+CZE+DEU+DJI+DMA+DNK+DOM+DZA+ECU+EGY+ERI+ESP+EST+ETH+FIN+FJI+FRA+FSM+GAB+GBR+GEO+GHA+GIN+GMB+GNB+GNQ+GRC+GRD+GTM+GUY+HND+HRV+HTI+HUN+IDN+IND+IRL+IRN+IRQ+ISL+ISR+ITA+JAM+JOR+JPN+KAZ+KEN+KGZ+KHM+KIR+KNA+KOR+KWT+LAO+LBN+LBR+LBY+LCA+LKA+LSO+LTU+LUX+LVA+MAR+MCO+MDA+MDG+MDV+MEX+MHL+MKD+MLI+MLT+MMR+MNE+MNG+MOZ+MRT+MUS+MWI+MYS+NAM+NER+NGA+NIC+NIU+NLD+NOR+NPL+NRU+NZL+OMN+PAK+PAN+PER+PHL+PLW+PNG+POL+PRK+PRT+PRY+PSE+QAT+ROU+RUS+RWA+SAU+SDN+SEN+SGP+SLB+SLE+SLV+SMR+SOM+SRB+SSD+STP+SUN+SUR+SVK+SVN+SWE+SWZ+SYC+SYR+TCD+TGO+THA+TJK+TKM+TLS+TON+TTO+TUN+TUR+TUV+TZA+UGA+UKR+URY+USA+UZB+VCT+VEN+VNM+VUT+WSM+YEM+YUG+ZAF+ZMB+ZWE.IM_BCG+IM_DTP1+IM_DTP3+IM_HEPB3+IM_HEPBB+IM_HIB3+IM_IPV1+IM_MCV1+IM_MCV2+IM_PCV3+IM_POL3+IM_RCV1+IM_ROTAC+IM_YFV..?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,
+17,T,Migration,,"Indicators =>
+1). Asylum Seekers
+2). Ratification of Human Rights Instruments
+3). Internally Displaced Persons
+4). Refugees
+5). International Migrants",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,MIGRATION,1.0/.MG_ASLYM+MG_IDP+MG_INTNL_MG+MG_RFGS+MG_RTCN_RGHTS..?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,,,,,
