@@ -177,7 +177,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
 					}
-					System.out.println(obvValueDbl);
+		//			System.out.println(obvValueDbl);
 					break;
 				case "PERCENTAGE WITH LESS OR GREATER THAN AND NULLS":
 					Object obvValueLessThanPct = observation.get(0);
@@ -211,7 +211,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
 					}
-			//		System.out.println(obvValueLessThanPctDbl);
+					System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 
