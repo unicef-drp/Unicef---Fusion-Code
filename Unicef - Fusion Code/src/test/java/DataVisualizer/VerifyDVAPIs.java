@@ -211,7 +211,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
 					}
-					System.out.println(obvValueLessThanPctDbl);
+		//			System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 
