@@ -16,8 +16,6 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 @UseTestDataFrom("testdata/DataVisualizerAPI.csv")
 @RunWith(SerenityParameterizedRunner.class)
 public class VerifyDVAPIs extends CommonGlobalUtils {
-
-
 	private String TC;
 	private String RunTest;
 	private String TestDesc1;
@@ -29,6 +27,10 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	private String EndPoint2;
 	private String JSON_Path;
 	private String WhatToTest;
+	private String LowerBoundary;
+	private String UpperBoundary;
+	private String LowerBoundary_Structure;
+	private String UpperBoundary_Structure;
 	private String ExpectedResult1;
 	private String ExpectedResult2;
 	private String ExpectedResult3;
@@ -58,8 +60,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 		{
 			RequestSpecification request = RestAssured.given();
 			Response response = getResponse(request);
-			Map<String, List> jsonResponse = response.jsonPath().getMap(JSON_Path); 	
-			verifyObservationValues(jsonResponse);  
+			Map<String, List> jsonResponse = response.jsonPath().getMap(JSON_Path);  // UnSorted Map 	
+			verifyObservationValues(jsonResponse,response);   
 			
 		}else{
 			LOGGER.info("Test Case ->  "+TC+"    is SKIPPED");
@@ -83,14 +85,28 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	
 
 	//  VERIFY OBSERVATION VAULES
-		private void verifyObservationValues(Map<String, List> jsonResponse) {
+		private void verifyObservationValues(Map<String, List> jsonResponse,
+				Response response) {
 			String moreThanTenth="";
 			String obvValeStr="";
 			String result;
+
 			
+			List<String> lowerBound=null; 
+			List<String> upperBound=null; 
+			lowerBound = new ArrayList<String>(response.jsonPath()
+					.getList("structure.attributes.observation["+LowerBoundary+"].values.id"));
+			upperBound = new ArrayList<String>(response.jsonPath()
+					.getList("structure.attributes.observation["+UpperBoundary+"].values.id"));
+			
+			
+			
+			//VERIFY NUMBERS, WORDS, ETC   
 			for (List<ArrayList> observation : jsonResponse.values()) 
 			{
 				int obvValuePctInt;
+
+				// Vereify Obs Values Based upon 'What TO Test'
 				switch(WhatToTest.toUpperCase())
 				{
 				case "LEVEL":    //  e.g. LOW, MEDIUM, HIGH - NO #'S
@@ -173,17 +189,48 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						}
 					Double obvValueDbl = Double.valueOf(obvValeStr);
 					Long obvValueLong = Long.valueOf(obvValeStr);
-					if(obvValueDbl-obvValueLong>0.9)
-					{
-						LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
-					}
-		//			System.out.println(obvValueDbl);
+					//  Verify that Total is an integer
+						if(obvValueDbl-obvValueLong>0.9)
+						{
+							LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
+						}
+					//  Verify that Total is within Upper/lower boundaries
+					// ONLY USED WHEN CONFIRM OBS VAULE IS BET. LOWER & UPPER BOUNDRIES
+						if (!LowerBoundary.isEmpty()  &&
+							!UpperBoundary.isEmpty()) {
+							//  Lower Boundary
+								Object obvLowerBoundaryValue = observation.get(Integer.valueOf(LowerBoundary_Structure));
+								int lowerBoundary = (int)obvLowerBoundaryValue; 
+							
+							//  Upper Boundary
+								Object obsUpperBoundaryValue = observation.get(Integer.valueOf(UpperBoundary_Structure));
+								int upperBoundary = (int)obsUpperBoundaryValue;
+
+							if(lowerBound.get(lowerBoundary).isEmpty() ||
+							   upperBound.get(upperBoundary).isEmpty())
+							{
+								break;
+							}
+							
+							if ( Double.valueOf(lowerBound.get(lowerBoundary))>obvValueDbl) {
+							LOGGER.error("Observation Total is Less Than the lower boundary=>  "+
+									"lowerBound => "+ lowerBound.get(lowerBoundary).toString()  +
+									"   Observation Value =>  "+ obvValueDbl);
+							}
+							if (Double.valueOf(upperBound.get(upperBoundary))<obvValueDbl) {
+							LOGGER.error("Observation Total is Greater Than the upper boundary=>  "+
+									"upperBound => "+ upperBound.get(upperBoundary).toString()  +
+									"   Observation Value =>  "+ obvValueDbl);
+							}
+						}
+			//		System.out.println(obvValueDbl);
 					break;
 				case "PERCENTAGE WITH LESS OR GREATER THAN AND NULLS":
 					Object obvValueLessThanPct = observation.get(0);
 					//  REMOVE THE LESS  OR GREATER THAN SYMBOL IF PRESENT  "<" or ">"
 					//  IF 'NULL' FOUND SKIP VERIFCATION
 						if(obvValueLessThanPct==null) {
+							
 							break;  // Valid to have a 'NULL', but no Verification
 						};
 						obvValeStr=obvValueLessThanPct.toString();
@@ -200,18 +247,18 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					// Verify greater than a tenth
 					//  UNLESS EXPECTEDRESULT1 IS EMPTY
 					//  Reason: Some TCs have more than 10th in % - So d not test it.  !!!
-					if(result.replace(".", "").length()>1 &&
-							ExpectedResult1.isEmpty())
-					{
-						LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValueLessThanPctDbl);
-					}
+						if(result.replace(".", "").length()>1 &&
+								ExpectedResult1.isEmpty())
+						{
+							LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValueLessThanPctDbl);
+						}
 					// Verify Boundaries
-					if(obvValueLessThanPctDbl>100  ||
-						obvValueLessThanPctDbl<0	)
-					{
-						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
-					}
-		//			System.out.println(obvValueLessThanPctDbl);
+						if(obvValueLessThanPctDbl>100  ||
+							obvValueLessThanPctDbl<0	)
+						{
+							LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
+						}
+			//			System.out.println(obvValueLessThanPctDbl);
 					break;
 				}
 
@@ -300,6 +347,21 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			protected String getWhatToTest() {
 				return WhatToTest;
 			}
+			/**
+			 * @return LowerBoundary & Upperboundary
+			 */
+			protected String getLowerBoundary() {
+				return LowerBoundary;
+			}
+			protected String getUpperBoundary() {
+				return UpperBoundary;
+			}			
+			protected String getLowerBoundary_Structure() {
+				return LowerBoundary_Structure;
+			}
+			protected String getUpperBoundary_Structure() {
+				return UpperBoundary_Structure;
+			}			
 			/**
 			 * @return Verify/Confirm Data
 			 */
