@@ -1,22 +1,22 @@
 TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,JSON_Path,WhatToTest,LowerBoundary,UpperBoundary,LowerBoundary_Structure,UpperBoundary_Structure,ExpectedResult1,ExpectedResult2,ExpectedResult3,ExpectedResult4,ExpectedResult5
-1,F,Child Mortality Estimates,Series name = IGME,"Indicators =>  
+1,T,Child Mortality Estimates,Series name = IGME,"Indicators =>  
 1). Under-5 Deaths
 2).   Infant Deaths 
 3).  Neonatal Deaths  
 4).  Deaths age 5 to 14",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CME_DF,1.0/.TMM0+TMY0+TMY0T4+TMY5T14..269.?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,10,11,11,12,,,,,
-2,F,Child Mortality Estimates,Series name = IGME,"Indicators =>   
+2,T,Child Mortality Estimates,Series name = IGME,"Indicators =>   
 1).  Under-5 Mortality Rate   
 2).  Mortality agae 5 to 14  
 3).  Infant Mortality Rate   
 4).  Neonatal Mortality Rate",PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CME_DF,1.0/.MRM0+MRY0+MRY0T4+MRY5T14..269.?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,,,,,0,1000,,,
-3,F,Child Protection FGM,,"Indicators =>
+3,T,Child Protection FGM,,"Indicators =>
 1).  Pecentage of girls and women aged 15-49 who have undergone female genital mutilation    
 2).  Percentage of men aged 15-49 who think that FGM should be eliminated   
 3).  Pecentage of girls and women aged 0-14 who have undergone female genital mutilation    
 4).  Percentage of women aged 15-49 who think that FGM should be eliminated",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,PT_FGM,1.0/.PT_F_0-14_FGM+PT_F_15-49_FGM+PT_F_15-49_FGM_ELIM+PT_M_15-49_FGM_ELIM...........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,,,,,
-4,F,Child Poverty,,"Indicators =>
+4,T,Child Poverty,,"Indicators =>
 1). Poverty Level",Level Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CHLD_PVTY,1.0/.PV_LEVEL.......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,LEVEL,,,,,LOW,MEDIUM,HIGH,VERY_LOW,VERY_HIGH
-5,F,Child Protection,,"Indicators =>
+5,T,Child Protection,,"Indicators =>
 1).  Percentage of students aged 13 to 15 years who reported being bullied on one or more days in the past 30 days
 2).  Percentage of girls aged 15-19 years who are currently married or in union
 3).  Percentage of girls aged 15-17 years who have experienced sexual violence
@@ -29,18 +29,18 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 10). Percentage of women aged 20-24 years married or in union before age 18
 11). Percentage of men aged 15-49 years who consider a husband to be justified in hitting or beating his wife for at least one of the specified reasons
 12). Percentage of boys aged 15-17 years who have ever experienced any sexual violence and sought help from a professional",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CHILD_PROTECTION,1.0/AFG+AGO+AIA+ALB+ARE+ARG+ARM+ATG+AUS+AUT+AZE+BDI+BEL+BEN+BFA+BGD+BGR+BHR+BHS+BIH+BLR+BLZ+BOL+BRA+BRB+BRN+BTN+BWA+CAF+CAN+CHE+CHL+CHN+CIV+CMR+COD+COG+COK+COL+COM+CPV+CRI+CSK+CUB+CYP+CZE+DEU+DJI+DMA+DNK+DOM+DZA+ECU+EGY+ERI+ESP+EST+ETH+FIN+FJI+FRA+GAB+GBR+GEO+GHA+GIN+GMB+GNB+GNQ+GRC+GRD+GTM+GUY+HND+HRV+HTI+HUN+IDN+IND+IRL+IRN+IRQ+ISL+ISR+ITA+JAM+JOR+JPN+KAZ+KEN+KGZ+KHM+KIR+KNA+KOR+KWT+LAO+LBN+LBR+LBY+LCA+LIE+LKA+LSO+LTU+LUX+LVA+MAR+MDA+MDG+MDV+MEX+MHL+MKD+MLI+MLT+MMR+MNE+MNG+MOZ+MRT+MSR+MUS+MWI+MYS+NAM+NER+NGA+NIC+NIU+NLD+NOR+NPL+NRU+NZL+OMN+PAK+PAN+PER+PHL+PNG+POL+PRK+PRT+PRY+PSE+QAT+ROU+RUS+RWA+SAU+SDN+SEN+SGP+SLB+SLE+SLV+SMR+SOM+SRB+SSD+STP+SUR+SVK+SVN+SWE+SWZ+SYC+SYR+TCA+TCD+TGO+THA+TJK+TKL+TKM+TLS+TON+TTO+TUN+TUR+TUV+TZA+UGA+UKR+URY+USA+UZB+VCT+VEN+VGB+VNM+VUT+WSM+YEM+ZAF+ZMB+ZWE.PT_ADLT_PS_NEC+PT_F_15-17_SX-V+PT_F_15-17_SX-V_HLP+PT_F_15-19_MRD+PT_F_15-49_W-BTNG+PT_F_20-24_MRD_U18+PT_M_15-17_SX-V+PT_M_15-17_SX-V_HLP+PT_M_15-19_MRD+PT_M_15-49_W-BTNG+PT_M_20-24_MRD_U18+PT_ST_13-15_BUL_30-DYS......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,,,,,
-6,F,Child Protection,,"Indicators =>
+6,T,Child Protection,,"Indicators =>
 1).  Rate of children in detention  
 2).  Rate of children in residential care
 ","PER 100,000s Testing",https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,CHILD_PROTECTION,1.0/AFG+AGO+AIA+ALB+ARE+ARG+ARM+ATG+AUS+AUT+AZE+BDI+BEL+BEN+BFA+BGD+BGR+BHR+BHS+BIH+BLR+BLZ+BOL+BRA+BRB+BRN+BTN+BWA+CAF+CAN+CHE+CHL+CHN+CIV+CMR+COD+COG+COK+COL+COM+CPV+CRI+CSK+CUB+CYP+CZE+DEU+DJI+DMA+DNK+DOM+DZA+ECU+EGY+ERI+ESP+EST+ETH+FIN+FJI+FRA+GAB+GBR+GEO+GHA+GIN+GMB+GNB+GNQ+GRC+GRD+GTM+GUY+HND+HRV+HTI+HUN+IDN+IND+IRL+IRN+IRQ+ISL+ISR+ITA+JAM+JOR+JPN+KAZ+KEN+KGZ+KHM+KIR+KNA+KOR+KWT+LAO+LBN+LBR+LBY+LCA+LIE+LKA+LSO+LTU+LUX+LVA+MAR+MDA+MDG+MDV+MEX+MHL+MKD+MLI+MLT+MMR+MNE+MNG+MOZ+MRT+MSR+MUS+MWI+MYS+NAM+NER+NGA+NIC+NIU+NLD+NOR+NPL+NRU+NZL+OMN+PAK+PAN+PER+PHL+PNG+POL+PRK+PRT+PRY+PSE+QAT+ROU+RUS+RWA+SAU+SDN+SEN+SGP+SLB+SLE+SLV+SMR+SOM+SRB+SSD+STP+SUR+SVK+SVN+SWE+SWZ+SYC+SYR+TCA+TCD+TGO+THA+TJK+TKL+TKM+TLS+TON+TTO+TUN+TUR+TUV+TZA+UGA+UKR+URY+USA+UZB+VCT+VEN+VGB+VNM+VUT+WSM+YEM+ZAF+ZMB+ZWE.PT_CHLD_DN+PT-CHLD_RES-CARE......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 100000s,,,,,0,100000,,,
-7,F,Early Childhood Development,,"Indicators =>
+7,T,Early Childhood Development,,"Indicators =>
 1).  Percentage of children aged 36-59 months with whom any adult household member has engaged in four or more activities to provide early stimulation and responsive care in the last 3 days
 2).  Percentage of children under age five who have three or more childrens books
 3).  Percentage of children aged 36-59 months who are developmentally on track in at least 3 of the 4 following domains: literacy-numeracy, physical, social-emotional and learning
 4).  Percentage of children aged 36-59 months attending an early childhood education programme
 5).  Percentage of children under age five who play with two or more types of playthings
 6).  Percentage of children under age five left alone or under the supervision of another child younger than 10 years of age for more than one hour at least once in the last week",PERCENTAGE Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,EARLY_CHILD_DEVELOP,1.0/.ECD_CHLD_36-59M_ADLT_SRC+ECD_CHLD_36-59M_EDU-PGM+ECD_CHLD_36-59M_LMPSL+ECD_CHLD_U5_BKS-HM+ECD_CHLD_U5_LFT-ALN+ECD_CHLD_U5_PLYTH-HM..........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE,,,,,,,,,
-8,F,Education,,"Indicators =>
+8,T,Education,,"Indicators =>
 1).  Adjusted net attendance rate for youth of upper secondary school age
 2).  Adjusted net attendance rate for adolescents of lower secondary school age
 3).  Out-of-school rate for youth of upper secondary school age
@@ -65,7 +65,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 18). Per cent of young people (aged 15-24) who know a place to get tested for HIV
 19). Per cent of young people (aged 15-24) who have ever been tested for HIV and received the result of the last test
 24). Per cent of young people (aged 15-24) who had sex with a non-marital, non-cohabitating partner in the past 12 months reporting the use of a condom during their last sexual intercourse",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_PED_ART_CVG+HVA_PMTCT_MTCT+HVA_PED_EID_CVG+HVA_PMTCT_ART_CVG+HVA_PMTCT_ARV_CVG+HVA_PMTCT_TEST_CVG+HVA_PREV_CNDM_MULT+HVA_PREV_CNDM_REG+HVA_PREV_KNOW+HVA_PREV_KNOW_TEST+HVA_PREV_STIGMA+HVA_PREV_TEST_RES+HVA_PREV_TEST_RES_12.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,,,,,
-10,F,HIV and AIDS,,"Indicators =>  
+10,T,HIV and AIDS,,"Indicators =>  
 6). Estimated number of pregnant women living with HIV
 7). Estimated number of children (aged 0-17) who have lost one or both parents due to AIDS
 8). Reported number of children (aged 0-14) receiving ART
@@ -76,12 +76,12 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 21). Estimated number of new HIV infections
 23). Estimated number of children (aged 0-17) who have lost one or both parents due to all causes
 ",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_DTH_ANN+HVA_EPI_INF_ANN+HVA_EPI_LHIV+HVA_PED_ART_NUM+HVA_PED_LOST+HVA_PED_LOST_AIDS+HVA_PMTCT_ART_NUM+HVA_PMTCT_ARV_NUM+HVA_PMTCT_PWLHIV.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,,,,,,,,,
-11,F,HIV and AIDS,,"Indicators =>   
+11,T,HIV and AIDS,,"Indicators =>   
 12). Estimated incidence rate (new HIV infection per 1,000 uninfected population)",PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_INF_RT.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,,,,,0,1000,,,
-12,F,HIV and AIDS,,"Indicators =>
+12,T,HIV and AIDS,,"Indicators =>
 22). Estimated rate of annual AIDS-related deaths (per 100,000 population)","PER 100,000s Testing",https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,HIV_AIDS,1.0/.HVA_EPI_DTH_RT.....?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 100000s,,,,,0,100000,,,
-13,F,SDG Child Mortality,,Testing all data,PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,SDG_CHLD_MORT,1.0/all?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,,,,,0,1000,,,
-14,F,Maternal Newborn Child Health,,"Indicators =>
+13,T,SDG Child Mortality,,Testing all data,PER 1000s Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,SDG_CHLD_MORT,1.0/all?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PER 1000s,,,,,0,1000,,,
+14,T,Maternal Newborn Child Health,,"Indicators =>
 1). Percentage of women aged 15–49 years attended at least once during pregnancy by skilled health personnel (doctor, nurse or midwife). The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 2). Percentage of women aged 15–49 years attended at least four times during pregnancy by any provider. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 3). Percentage of births delivered in a health facility. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
@@ -89,7 +89,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 5). Percentage of women aged 20-24 who gave birth before age 18. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 6). Percentage of women aged 15–49 years who received postnatal care within 2 days after birth. The indicator refers to women who had a live birth in a recent time period, generally two years for MICS and five years for DHS.
 7). Percentage of last births in the two years preceding the survey who had their first postnatal checkup within the first two days after birth. Includes newborns who received a checkup from a doctor, midwife, nurse, feldsher, or traditional birth attendant.",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,MNCH,1.0/.MNH_ANC1+MNH_ANC4+MNH_BIRTH18+MNH_CSECTION+MNH_INST_DEL+MNH_PNC_B+MNH_PNC_W..........?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,,,,,
-15,F,WASH,,"Indicators =>
+15,T,WASH,,"Indicators =>
 1). Proportion of health care facilities with no cleaning service
 2). Proportion of the population using of sanitation facilities connected to sewer networks
 3). Proportion of health care facilities with basic health care waste management services
@@ -142,7 +142,7 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 50). Proportion of schools with limited drinking water services
 51). Proportion of the population using of improved drinking water sources available when needed
 52). Proportion of schools with no drinking water service",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,WASH,1.0/.WS_HCF_C-B+WS_HCF_C-L+WS_HCF_C-N+WS_HCF_H-B+WS_HCF_H-L+WS_HCF_H-N+WS_HCF_S-B+WS_HCF_S-L+WS_HCF_S-N+WS_HCF_W-B+WS_HCF_W-L+WS_HCF_W-N+WS_HCF_WM-B+WS_HCF_WM-L+WS_HCF_WM-N+WS_PPL_H-B+WS_PPL_H-L+WS_PPL_H-N+WS_PPL_S-ALB+WS_PPL_S-B+WS_PPL_S-DIS+WS_PPL_S-FST+WS_PPL_S-I+WS_PPL_S-L+WS_PPL_S-LAT+WS_PPL_S-SEP+WS_PPL_S-SEW+WS_PPL_S-SM+WS_PPL_S-WWT+WS_PPL_W-ALB+WS_PPL_W-AVA+WS_PPL_W-B+WS_PPL_W-I+WS_PPL_W-L+WS_PPL_W-NP+WS_PPL_W-P+WS_PPL_W-PRE+WS_PPL_W-QUA+WS_PPL_W-SM+WS_PPL_W-SW+WS_PPL_W-UI+WS_PPS_S-OD+WS_PPS_S-UI+WS_SCH_H-B+WS_SCH_H-L+WS_SCH_H-N+WS_SCH_S-B+WS_SCH_S-L+WS_SCH_S-N+WS_SCH_W-B+WS_SCH_W-L+WS_SCH_W-N.......?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,DO NOT VERIFY 10TH,,,,
-16,F,Immunisation,,"Indicators =>
+16,T,Immunisation,,"Indicators =>
 1). Percentage of surviving infants who received the third dose of Hib containing vaccine
 2). Percentage of surviving infants who received the first dose of rubella containing vaccine
 3). Percentage of surviving infants who received a dose of yellow fever vaccine (for countries at risk of YF and where YF vaccine in the national schedule)
@@ -157,13 +157,13 @@ TC,RunTest,TestDesc1,TestDesc2,TestDesc3,TestDesc4,URL_Base,EndPoint1,EndPoint2,
 12). Percentage of surviving infants who received the third dose of HepB containing vaccine
 13). Percentage of surviving infants who received the last dose of rotavirus vaccine (2nd or 3rd dose depending on vaccine used)
 14). Percentage of surviving infants who received the third dose of polio vaccine",PERCENTAGE WITH LESS OR GREATER THAN SYMBOLS AND NULLS- Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,IMMUNISATION,1.0/AFG+AGO+ALB+AND+ARE+ARG+ARM+ATG+AUS+AUT+AZE+BDI+BEL+BEN+BFA+BGD+BGR+BHR+BHS+BIH+BLR+BLZ+BOL+BRA+BRB+BRN+BTN+BWA+CAF+CAN+CHE+CHL+CHN+CIV+CMR+COD+COG+COK+COL+COM+CPV+CRI+CSK+CUB+CYP+CZE+DEU+DJI+DMA+DNK+DOM+DZA+ECU+EGY+ERI+ESP+EST+ETH+FIN+FJI+FRA+FSM+GAB+GBR+GEO+GHA+GIN+GMB+GNB+GNQ+GRC+GRD+GTM+GUY+HND+HRV+HTI+HUN+IDN+IND+IRL+IRN+IRQ+ISL+ISR+ITA+JAM+JOR+JPN+KAZ+KEN+KGZ+KHM+KIR+KNA+KOR+KWT+LAO+LBN+LBR+LBY+LCA+LKA+LSO+LTU+LUX+LVA+MAR+MCO+MDA+MDG+MDV+MEX+MHL+MKD+MLI+MLT+MMR+MNE+MNG+MOZ+MRT+MUS+MWI+MYS+NAM+NER+NGA+NIC+NIU+NLD+NOR+NPL+NRU+NZL+OMN+PAK+PAN+PER+PHL+PLW+PNG+POL+PRK+PRT+PRY+PSE+QAT+ROU+RUS+RWA+SAU+SDN+SEN+SGP+SLB+SLE+SLV+SMR+SOM+SRB+SSD+STP+SUN+SUR+SVK+SVN+SWE+SWZ+SYC+SYR+TCD+TGO+THA+TJK+TKM+TLS+TON+TTO+TUN+TUR+TUV+TZA+UGA+UKR+URY+USA+UZB+VCT+VEN+VNM+VUT+WSM+YEM+YUG+ZAF+ZMB+ZWE.IM_BCG+IM_DTP1+IM_DTP3+IM_HEPB3+IM_HEPBB+IM_HIB3+IM_IPV1+IM_MCV1+IM_MCV2+IM_PCV3+IM_POL3+IM_RCV1+IM_ROTAC+IM_YFV..?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,PERCENTAGE WITH LESS OR GREATER THAN AND NULLS,,,,,,,,,
-17,F,Migration,,"Indicators =>
+17,T,Migration,,"Indicators =>
 1). Asylum Seekers
 2). Ratification of Human Rights Instruments
 3). Internally Displaced Persons
 4). Refugees
 5). International Migrants",TOTAL Testing,https://unicef-registry.sdmxcloud.org/ws/public/sdmxapi/rest/data/,"UNICEF,MIGRATION,1.0/.MG_ASLYM+MG_IDP+MG_INTNL_MG+MG_RFGS+MG_RTCN_RGHTS..?format=sdmx-json&includeHistory=true&includeMetadata=true&dimensionAtObservation=AllDimensions&includeAllAnnotations=true",,dataSets[0].observations,TOTAL,,,,,,,,,
-18,F,Nutrition,,"Indicators =>
+18,T,Nutrition,,"Indicators =>
 1). Weight-for-height <-3 SD (Severe wasting)
 2). Minimum Meal Frequency (6 to 23 months)
 3). Introduction to Solid, Semi-Solid Foods (6 to 8 months)

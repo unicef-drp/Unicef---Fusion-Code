@@ -87,26 +87,31 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	//  VERIFY OBSERVATION VAULES
 		private void verifyObservationValues(Map<String, List> jsonResponse,
 				Response response) {
+			int jsonRespCnt=-1;
 			String moreThanTenth="";
 			String obvValeStr="";
 			String result;
 
+			// Used to Verify upper/Lower Boundries
+				List<String> lowerBound=null; 
+				List<String> upperBound=null; 
+				lowerBound = new ArrayList<String>(response.jsonPath()
+						.getList("structure.attributes.observation["+LowerBoundary+"].values.id"));
+				upperBound = new ArrayList<String>(response.jsonPath()
+						.getList("structure.attributes.observation["+UpperBoundary+"].values.id"));
 			
-			List<String> lowerBound=null; 
-			List<String> upperBound=null; 
-			lowerBound = new ArrayList<String>(response.jsonPath()
-					.getList("structure.attributes.observation["+LowerBoundary+"].values.id"));
-			upperBound = new ArrayList<String>(response.jsonPath()
-					.getList("structure.attributes.observation["+UpperBoundary+"].values.id"));
-			
-			
+			// Used to store Keys, then used when ERROR occur and and display additional Info on the LOGGER.ERROR
+				List<String> keyList=null;
+				keyList = new ArrayList<String>(jsonResponse.keySet());
 			
 			//VERIFY NUMBERS, WORDS, ETC   
 			for (List<ArrayList> observation : jsonResponse.values()) 
 			{
 				int obvValuePctInt;
 
-				// Vereify Obs Values Based upon 'What TO Test'
+				jsonRespCnt++;  //Used to count the number of iterations for Observation List
+				
+				// Verify Obs Values Based upon 'What TO Test'
 				switch(WhatToTest.toUpperCase())
 				{
 				case "LEVEL":    //  e.g. LOW, MEDIUM, HIGH - NO #'S
@@ -120,6 +125,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					if(!levelList.contains(obvValueLevel.toString().toUpperCase()))
 					{
 						LOGGER.error("Observation Level is not within range =>  "+obvValueLevel.toString()); 
+						printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 					}
 			//		System.out.println(obvValueLevel.toString());
 					break;
@@ -139,12 +145,12 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 							obvValeStr=obvValeStr.replace(">", "");
 						}
 					Double obvValuePer1000Dbl=Double.valueOf(obvValeStr);
-			
 					
 					if(obvValuePer1000Dbl> Double.valueOf(ExpectedResult2) ||
 						obvValuePer1000Dbl< Double.valueOf(ExpectedResult1)) {
 						LOGGER.error("Observation Per "+ExpectedResult2+(" is less than Zero or greater than"+ExpectedResult2+
 								"=>  "+obvValuePer1000Dbl)); 
+						printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 					}
 		//			System.out.println(obvValuePer1000Dbl);
 					break;
@@ -161,15 +167,17 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					moreThanTenth=obvValuePctDbl.toString();
 					result=moreThanTenth.substring(moreThanTenth.indexOf("."), moreThanTenth.length());
 					// Verify greater than a tenth
-					if(result.replace(".", "").length()>1)
+					if(result.replace(".", "").length()>2)
 					{
-						LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValuePctDbl);
+						LOGGER.error("Observation Percentage value is not rounded to a 100th=>  "+obvValuePctDbl);
+						printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 					}
 					// Verify Boundaries
 					if(obvValuePctDbl>100  ||
 						obvValuePctDbl<0	)
 					{
 						LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValuePctDbl);
+						printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 					}
 			//		System.out.println(obvValuePctDbl);
 					break;
@@ -193,6 +201,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 						if(obvValueDbl-obvValueLong>0.9)
 						{
 							LOGGER.error("Observation Total is not an Integer=>  "+obvValueDbl);
+							printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 						}
 					//  Verify that Total is within Upper/lower boundaries
 					// ONLY USED WHEN CONFIRM OBS VAULE IS BET. LOWER & UPPER BOUNDRIES
@@ -216,11 +225,13 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 							LOGGER.error("Observation Total is Less Than the lower boundary=>  "+
 									"lowerBound => "+ lowerBound.get(lowerBoundary).toString()  +
 									"   Observation Value =>  "+ obvValueDbl);
+							printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 							}
 							if (Double.valueOf(upperBound.get(upperBoundary))<obvValueDbl) {
 							LOGGER.error("Observation Total is Greater Than the upper boundary=>  "+
 									"upperBound => "+ upperBound.get(upperBoundary).toString()  +
 									"   Observation Value =>  "+ obvValueDbl);
+							printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 							}
 						}
 			//		System.out.println(obvValueDbl);
@@ -247,16 +258,18 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					// Verify greater than a tenth
 					//  UNLESS EXPECTEDRESULT1 IS EMPTY
 					//  Reason: Some TCs have more than 10th in % - So d not test it.  !!!
-						if(result.replace(".", "").length()>1 &&
+						if(result.replace(".", "").length()>2 &&
 								ExpectedResult1.isEmpty())
 						{
-							LOGGER.error("Observation Percentage value is not rounded to a 10th=>  "+obvValueLessThanPctDbl);
+							LOGGER.error("Observation Percentage value is not rounded to a 100th=>  "+obvValueLessThanPctDbl);
+							printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 						}
 					// Verify Boundaries
 						if(obvValueLessThanPctDbl>100  ||
 							obvValueLessThanPctDbl<0	)
 						{
 							LOGGER.error("Observation Percentage value either less than 0% or greater 100%  =>  "+obvValueLessThanPctDbl);
+							printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
 						}
 			//			System.out.println(obvValueLessThanPctDbl);
 					break;
@@ -264,6 +277,97 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 
 			}
 		}
+
+
+	private void printOutMoreInfoOnErrorFound(List<String> keyList,
+											  Response response,
+											  int jsonRespCnt) {
+		String[] keyArray = keyList.get(jsonRespCnt).split(":");
+		//  Ref Area & Indicator are always in the same positions
+		String refAreaValue = response.jsonPath().get("structure.dimensions.observation[0].values["+ keyArray[0] +"].name");
+        String unicefInd = response.jsonPath().get("structure.dimensions.observation[1].values["+ keyArray[1] +"].id");
+
+		
+		switch(TestDesc1.toUpperCase())  //Using Switch because of the different amount of Dimensions per Indicator
+		{
+			case "IMMUNISATION":
+			case "MIGRATION":	
+			{
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[4].values["+ keyArray[4] +"].id");
+					LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+							"    Unicef Indicator=>  "+ unicefInd +
+							"    Time Period=>  "+timePeriod);
+			break;
+			}
+			case "CHILD MORTALITY ESTIMATES":
+				{
+			            String timePeriod = response.jsonPath().get("structure.dimensions.observation[5].values["+ keyArray[5] +"].id");
+						LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+								"    Unicef Indicator=>  "+ unicefInd +
+								"    Time Period=>  "+timePeriod);
+				break;
+				}
+			case "HIV AND AIDS":
+			case "EDUCATION":
+				{
+			            String timePeriod = response.jsonPath().get("structure.dimensions.observation[7].values["+ keyArray[7] +"].id");
+						LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+								"    Unicef Indicator=>  "+ unicefInd +
+								"    Time Period=>  "+timePeriod);
+				break;
+				}
+			case "CHILD PROTECTION":
+			case "NUTRITION":
+				{
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[8].values["+ keyArray[8] +"].id");
+					LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+							"    Unicef Indicator=>  "+ unicefInd +
+							"    Time Period=>  "+timePeriod);
+				break;
+				}
+			case "WASH":
+			case "CHILD POVERTY":
+				{
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[9].values["+ keyArray[9] +"].id");
+					LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+							"    Unicef Indicator=>  "+ unicefInd +
+							"    Time Period=>  "+timePeriod);
+				break;
+				}
+			case "EARLY CHILDHOOD DEVELOPMENT":
+			case "MATERNAL NEWBORN CHILD HEALTH":	
+				{
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[12].values["+ keyArray[12] +"].id");
+		    		LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+		    				"    Unicef Indicator=>  "+ unicefInd +
+		    				"    Time Period=>  "+timePeriod);
+				break;
+				}			
+			case "CHILD PROTECTION FGM":
+				{
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[13].values["+ keyArray[13] +"].id");
+		    		LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Ref Area =>  "+   refAreaValue +
+		    				"    Unicef Indicator=>  "+ unicefInd +
+		    				"    Time Period=>  "+timePeriod);
+				break;
+				}
+				case "SDG CHILD MORTALITY":
+				{
+		            String frequency = response.jsonPath().get("structure.dimensions.observation[0].values["+ keyArray[0] +"].id");
+		            String rptType = response.jsonPath().get("structure.dimensions.observation[1].values["+ keyArray[1] +"].id");
+		            String timePeriod = response.jsonPath().get("structure.dimensions.observation[13].values["+ keyArray[13] +"].id");
+		    		LOGGER.error("  ++++++  ADDITIONAL INFO ++++++   "+  "Frequency =>  "+   frequency +
+		    				"    Report Type=>  "+ rptType +
+		    				"    Time Period=>  "+timePeriod);
+				break;
+				}
+
+		}
+
+
+	}
+
+
 
 	
 
