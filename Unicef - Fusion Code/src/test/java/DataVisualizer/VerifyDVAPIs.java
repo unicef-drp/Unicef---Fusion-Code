@@ -284,8 +284,8 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 											  int jsonRespCnt) {
 		String[] keyArray = keyList.get(jsonRespCnt).split(":");
 		//  Ref Area & Indicator are always in the same positions
-		String refAreaValue = response.jsonPath().get("structure.dimensions.observation[0].values["+ keyArray[0] +"].name");
-        String unicefInd = response.jsonPath().get("structure.dimensions.observation[1].values["+ keyArray[1] +"].id");
+			String refAreaValue = response.jsonPath().get("structure.dimensions.observation[0].values["+ keyArray[0] +"].name");
+	        String unicefInd = response.jsonPath().get("structure.dimensions.observation[1].values["+ keyArray[1] +"].id");
 
 		
 		switch(TestDesc1.toUpperCase())  //Using Switch because of the different amount of Dimensions per Indicator
