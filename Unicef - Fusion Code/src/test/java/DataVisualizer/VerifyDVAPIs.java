@@ -31,6 +31,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 	private String UpperBoundary;
 	private String LowerBoundary_Structure;
 	private String UpperBoundary_Structure;
+	private String PercentageDecPlaceCheck;
 	private String ExpectedResult1;
 	private String ExpectedResult2;
 	private String ExpectedResult3;
@@ -167,7 +168,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					moreThanTenth=obvValuePctDbl.toString();
 					result=moreThanTenth.substring(moreThanTenth.indexOf("."), moreThanTenth.length());
 					// Verify greater than a tenth
-					if(result.replace(".", "").length()>2)
+					if(result.replace(".", "").length()>Integer.parseInt(PercentageDecPlaceCheck))
 					{
 						LOGGER.error("Observation Percentage value is not rounded to a 100th=>  "+obvValuePctDbl);
 						printOutMoreInfoOnErrorFound(keyList,response,jsonRespCnt++);				
@@ -258,7 +259,7 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 					// Verify greater than a tenth
 					//  UNLESS EXPECTEDRESULT1 IS EMPTY
 					//  Reason: Some TCs have more than 10th in % - So d not test it.  !!!
-						if(result.replace(".", "").length()>2 &&
+						if(result.replace(".", "").length()>Integer.parseInt(PercentageDecPlaceCheck) &&
 								ExpectedResult1.isEmpty())
 						{
 							LOGGER.error("Observation Percentage value is not rounded to a 100th=>  "+obvValueLessThanPctDbl);
@@ -466,6 +467,12 @@ public class VerifyDVAPIs extends CommonGlobalUtils {
 			protected String getUpperBoundary_Structure() {
 				return UpperBoundary_Structure;
 			}			
+			/**
+			 * @return PercentageDecPlaceCheck
+			 */
+			protected String getPercentageDecPlaceCheck() {
+				return PercentageDecPlaceCheck;
+			}
 			/**
 			 * @return Verify/Confirm Data
 			 */
